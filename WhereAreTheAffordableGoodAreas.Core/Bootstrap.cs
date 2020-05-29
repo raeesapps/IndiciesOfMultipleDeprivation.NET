@@ -19,7 +19,7 @@ namespace WhereAreTheAffordableGoodAreas
             _lowerLayerSupportOutputAreaCodeToWardCodeParser = new LowerLayerSuperOutputAreaCodeToWardCodeParser(lowerLayerSuperOutputAreaToWardPath);
             _algorithms = new List<IAlgorithm>
             {
-                new SelectTopDecileAndSortByPriceAlgorithm(),
+                new SelectByMeanDecileFilterLessThanOr7SortByMeanPriceAlgorithm(),
             };
         }
 
