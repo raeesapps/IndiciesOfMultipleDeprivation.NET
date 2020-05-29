@@ -5,7 +5,6 @@ namespace WhereAreTheAffordableGoodAreas.Models
         public string Code { get; set; }
         public string Name { get; set; }
         public LocalAuthorityDistrict LocalAuthorityDistrict { get; set; }
-        public int IndexOfMultipleDeprivationRank { get; set; }
-        public int IndexOfMultipleDeprivationDecile { get; set; }
+        public IndexOfMultipleDeprivation IndexOfMultipleDeprivation { get; set; }
     }
 }
