@@ -7,12 +7,14 @@ namespace WhereAreTheAffordableGoodAreas
     public class Bootstrap
     {
         private readonly ILinearParser<LowerLayerSuperOutputArea> _lowerLayerSuperOutputAreaParser;
-        private readonly IKeyValueParser<string, string> _lowerLayerSupportOutputAreaToWardParser;
+        private readonly ILinearParser<HousePrice> _housePriceParser;
+        private readonly IKeyValueParser<string, string> _lowerLayerSupportOutputAreaCodeToWardCodeParser;
 
-        public Bootstrap(string lowerLayerSuperOutputAreaPath, string lowerLayerSuperOutputAreaToWardPath)
+        public Bootstrap(string lowerLayerSuperOutputAreaPath, string housePricePath, string lowerLayerSuperOutputAreaToWardPath)
         {
             _lowerLayerSuperOutputAreaParser = new LowerLayerSuperOutputAreaParser(lowerLayerSuperOutputAreaPath);
-            _lowerLayerSupportOutputAreaToWardParser = new LowerLayerSuperOutputAreaToWardParser(lowerLayerSuperOutputAreaToWardPath);
+            _housePriceParser = new HousePriceParser(housePricePath);
+            _lowerLayerSupportOutputAreaCodeToWardCodeParser = new LowerLayerSuperOutputAreaCodeToWardCodeParser(lowerLayerSuperOutputAreaToWardPath);
         }
 
         public void Start()
@@ -23,10 +25,16 @@ namespace WhereAreTheAffordableGoodAreas
                 //Console.WriteLine(lowerLayerSuperOutputArea);
             }
 
-            var lowerLayerSupportOutputAreasToWards = _lowerLayerSupportOutputAreaToWardParser.KeyValueParse();
-            foreach (var kv in lowerLayerSupportOutputAreasToWards)
+            var housePrices = _housePriceParser.Parse();
+            foreach (var housePrice in housePrices)
             {
-                Console.WriteLine(kv);
+                Console.WriteLine(housePrice);
+            }
+
+            var lowerLayerSupportOutputAreaCodesToWardCodes = _lowerLayerSupportOutputAreaCodeToWardCodeParser.KeyValueParse();
+            foreach (var kv in lowerLayerSupportOutputAreaCodesToWardCodes)
+            {
+                //Console.WriteLine(kv);
             }
         }
     }

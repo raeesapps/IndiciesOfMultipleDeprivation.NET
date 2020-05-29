@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace WhereAreTheAffordableGoodAreas.Parser
 {
-    public class LowerLayerSuperOutputAreaToWardParser : CsvParser<string, string>
+    public class LowerLayerSuperOutputAreaCodeToWardCodeParser : CsvParser<string, string>
     {
-        public LowerLayerSuperOutputAreaToWardParser(string path) : base(path)
+        public LowerLayerSuperOutputAreaCodeToWardCodeParser(string path) : base(path)
         {
         }
 
