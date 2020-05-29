@@ -6,7 +6,8 @@ namespace WhereAreTheAffordableGoodAreas
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var bootstrap = new Bootstrap("//Users/raees/Documents/area_data/imd.csv");
+            bootstrap.Start();
         }
     }
 }
