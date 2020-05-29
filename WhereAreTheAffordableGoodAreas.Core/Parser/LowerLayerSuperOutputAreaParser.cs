@@ -3,7 +3,7 @@ using WhereAreTheAffordableGoodAreas.Models;
 
 namespace WhereAreTheAffordableGoodAreas.Parser
 {
-    public class LowerLayerSuperOutputAreaParser : CsvParser<LowerLayerSuperOutputArea>
+    public class LowerLayerSuperOutputAreaParser : CsvParser<LowerLayerSuperOutputArea, object>
     {
         protected override void OnReadFields(IList<LowerLayerSuperOutputArea> ts, string[] fields)
         {
@@ -35,6 +35,11 @@ namespace WhereAreTheAffordableGoodAreas.Parser
             };
                     
             ts.Add(lowerLayerSuperOutputArea);
+        }
+
+        protected override void OnReadFields(IDictionary<LowerLayerSuperOutputArea, object> kvs, string[] fields)
+        {
+            throw new System.NotImplementedException();
         }
 
         public LowerLayerSuperOutputAreaParser(string path) : base(path)
