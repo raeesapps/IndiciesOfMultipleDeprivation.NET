@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using WhereAreTheAffordableGoodAreas.Models;
 
-namespace WhereAreTheAffordableGoodAreas.Dataset
+namespace WhereAreTheAffordableGoodAreas.Parser
 {
     public class LowerLayerSuperOutputAreaParser : CsvParser<LowerLayerSuperOutputArea>
     {

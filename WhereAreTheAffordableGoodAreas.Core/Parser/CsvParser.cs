@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualBasic.FileIO;
 
-namespace WhereAreTheAffordableGoodAreas.Dataset
+namespace WhereAreTheAffordableGoodAreas.Parser
 {
     public abstract class CsvParser<T> : IParser<T>
     {

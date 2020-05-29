@@ -1,5 +1,5 @@
 using System;
-using WhereAreTheAffordableGoodAreas.Dataset;
+using WhereAreTheAffordableGoodAreas.Parser;
 
 namespace WhereAreTheAffordableGoodAreas
 {

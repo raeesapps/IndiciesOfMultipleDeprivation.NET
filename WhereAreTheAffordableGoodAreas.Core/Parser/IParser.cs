@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WhereAreTheAffordableGoodAreas.Dataset
+namespace WhereAreTheAffordableGoodAreas.Parser
 {
     public interface IParser<T>
     {
