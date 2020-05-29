@@ -5,7 +5,7 @@ namespace WhereAreTheAffordableGoodAreas.Parser
 {
     public class LowerLayerSuperOutputAreaParser : CsvParser<LowerLayerSuperOutputArea>
     {
-        protected override void OnReadFields(string[] fields)
+        protected override void OnReadFields(IList<LowerLayerSuperOutputArea> ts, string[] fields)
         {
             var lowerLayerSuperOutputAreaCode = fields[0];
             var lowerLayerSuperOutputAreaName = fields[1];
@@ -33,14 +33,11 @@ namespace WhereAreTheAffordableGoodAreas.Parser
                 LocalAuthorityDistrict = localAuthorityDistrict,
                 IndexOfMultipleDeprivation = indexOfMultipleDeprivation,
             };
-
-            if (_ts is List<LowerLayerSuperOutputArea> tsAsList)
-            {
-                tsAsList.Add(lowerLayerSuperOutputArea);
-            }
+                    
+            ts.Add(lowerLayerSuperOutputArea);
         }
 
-        public LowerLayerSuperOutputAreaParser(string path, IEnumerable<LowerLayerSuperOutputArea> lowerLayerSuperOutputAreas) : base(path, lowerLayerSuperOutputAreas)
+        public LowerLayerSuperOutputAreaParser(string path) : base(path)
         {
         }
     }

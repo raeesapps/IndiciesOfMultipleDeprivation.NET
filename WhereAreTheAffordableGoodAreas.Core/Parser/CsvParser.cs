@@ -6,16 +6,16 @@ namespace WhereAreTheAffordableGoodAreas.Parser
     public abstract class CsvParser<T> : IParser<T>
     {
         private readonly string _path;
-        protected readonly IEnumerable<T> _ts;
 
-        public CsvParser(string path, IEnumerable<T> ts)
+        public CsvParser(string path)
         {
             _path = path;
-            _ts = ts;
         }
         
-        public void Parse()
+        public IEnumerable<T> Parse()
         {
+            var ts = new List<T>();
+            
             using var csvParser = new TextFieldParser(_path);
             csvParser.CommentTokens = new string[] { "#" };
             csvParser.SetDelimiters(new string[] { "," });
@@ -26,10 +26,12 @@ namespace WhereAreTheAffordableGoodAreas.Parser
             while (!csvParser.EndOfData)
             {
                 var fields = csvParser.ReadFields();
-                OnReadFields(fields);
+                OnReadFields(ts, fields);
             }
+
+            return ts;
         }
 
-        protected abstract void OnReadFields(string[] fields);
+        protected abstract void OnReadFields(IList<T> ts, string[] fields);
     }
 }

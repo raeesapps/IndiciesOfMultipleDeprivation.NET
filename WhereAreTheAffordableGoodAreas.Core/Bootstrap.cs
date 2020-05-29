@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using WhereAreTheAffordableGoodAreas.Models;
 using WhereAreTheAffordableGoodAreas.Parser;
 
 namespace WhereAreTheAffordableGoodAreas
@@ -7,19 +5,17 @@ namespace WhereAreTheAffordableGoodAreas
     public class Bootstrap
     {
         private readonly LowerLayerSuperOutputAreaParser _lowerLayerSuperOutputAreaParser;
-        private readonly IEnumerable<LowerLayerSuperOutputArea> _lowerLayerSuperOutputAreas;
 
         public Bootstrap(string path)
         {
-            _lowerLayerSuperOutputAreas = new List<LowerLayerSuperOutputArea>();
-            _lowerLayerSuperOutputAreaParser = new LowerLayerSuperOutputAreaParser(path, _lowerLayerSuperOutputAreas);
+            _lowerLayerSuperOutputAreaParser = new LowerLayerSuperOutputAreaParser(path);
         }
 
         public void Start()
         {
-            _lowerLayerSuperOutputAreaParser.Parse();
+            var lowerLayerSuperOutputAreas = _lowerLayerSuperOutputAreaParser.Parse();
             
-            foreach (var lowerLayerSuperOutputArea in _lowerLayerSuperOutputAreas)
+            foreach (var lowerLayerSuperOutputArea in lowerLayerSuperOutputAreas)
             {
                 //Console.WriteLine(lowerLayerSuperOutputArea);
             }
