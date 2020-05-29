@@ -4,6 +4,6 @@ namespace WhereAreTheAffordableGoodAreas.Parser
 {
     public interface IParser<T>
     {
-        public IEnumerable<T> Parse();
+        public void Parse();
     }
 }
