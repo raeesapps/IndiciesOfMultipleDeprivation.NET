@@ -6,7 +6,7 @@ namespace WhereAreTheAffordableGoodAreas.Models
     {
         public LocalAuthorityDistrict LocalAuthorityDistrict { get; set; }
         public Ward Ward { get; set; }
-        public string AverageHousePrice { get; set; }
+        public double AverageHousePrice { get; set; }
         
         public override string ToString()
         {

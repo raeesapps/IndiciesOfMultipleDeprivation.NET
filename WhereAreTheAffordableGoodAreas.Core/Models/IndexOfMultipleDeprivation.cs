@@ -4,8 +4,8 @@ namespace WhereAreTheAffordableGoodAreas.Models
 {
     public class IndexOfMultipleDeprivation
     {
-        public string Rank { get; set; }
-        public string Decile { get; set; }
+        public int Rank { get; set; }
+        public int Decile { get; set; }
         
         public override string ToString()
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using WhereAreTheAffordableGoodAreas.Models;
 
@@ -27,13 +28,18 @@ namespace WhereAreTheAffordableGoodAreas.Parser
                 Name = wardName,
             };
 
-            var priceEndingSept2019 = fields[77];
+            var priceEndingSept2019 = fields[99];
+
+            if (priceEndingSept2019 == ":")
+            {
+                return;
+            }
 
             var housePrice = new HousePrice
             {
                 LocalAuthorityDistrict = localAuthorityDistrict,
                 Ward = ward,
-                AverageHousePrice = priceEndingSept2019,
+                AverageHousePrice = double.Parse(priceEndingSept2019.Replace(",", "")),
             };
 
             ks.Add(housePrice);

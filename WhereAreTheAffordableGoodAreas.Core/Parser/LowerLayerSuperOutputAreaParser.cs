@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using WhereAreTheAffordableGoodAreas.Models;
 
@@ -20,10 +21,11 @@ namespace WhereAreTheAffordableGoodAreas.Parser
 
             var indexOfMultipleDeprivationRank = fields[4];
             var indexOfMultipleDeprivationDecile = fields[5];
+            
             var indexOfMultipleDeprivation = new IndexOfMultipleDeprivation
             {
-                Rank = indexOfMultipleDeprivationRank,
-                Decile = indexOfMultipleDeprivationDecile,
+                Rank = int.Parse(indexOfMultipleDeprivationRank.Replace(",", "")),
+                Decile = int.Parse(indexOfMultipleDeprivationDecile.Replace(",", "")),
             };
 
             var lowerLayerSuperOutputArea = new LowerLayerSuperOutputArea
