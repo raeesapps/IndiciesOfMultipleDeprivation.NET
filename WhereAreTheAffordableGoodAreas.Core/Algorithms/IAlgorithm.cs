@@ -1,4 +1,11 @@
-$HEADER$namespace $NAMESPACE$
+using System.Collections.Generic;
+using WhereAreTheAffordableGoodAreas.Models;
+
+namespace WhereAreTheAffordableGoodAreas.Algorithms
 {
-  public class $CLASS$ {$END$}
+    public interface IAlgorithm
+    {
+        public void Execute(IList<LowerLayerSuperOutputArea> lowerLayerSuperOutputAreas,
+            IDictionary<string, string> lowerLayerSuperOutputAreaCodeToWardCode, IList<HousePrice> housePrices);
+    }
 }

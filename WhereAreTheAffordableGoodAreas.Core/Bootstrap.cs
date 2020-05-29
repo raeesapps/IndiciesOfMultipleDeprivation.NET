@@ -1,4 +1,5 @@
-using System;
+using System.Collections.Generic;
+using WhereAreTheAffordableGoodAreas.Algorithms;
 using WhereAreTheAffordableGoodAreas.Models;
 using WhereAreTheAffordableGoodAreas.Parser;
 
@@ -9,32 +10,28 @@ namespace WhereAreTheAffordableGoodAreas
         private readonly ILinearParser<LowerLayerSuperOutputArea> _lowerLayerSuperOutputAreaParser;
         private readonly ILinearParser<HousePrice> _housePriceParser;
         private readonly IKeyValueParser<string, string> _lowerLayerSupportOutputAreaCodeToWardCodeParser;
+        private readonly IEnumerable<IAlgorithm> _algorithms;
 
         public Bootstrap(string lowerLayerSuperOutputAreaPath, string housePricePath, string lowerLayerSuperOutputAreaToWardPath)
         {
             _lowerLayerSuperOutputAreaParser = new LowerLayerSuperOutputAreaParser(lowerLayerSuperOutputAreaPath);
             _housePriceParser = new HousePriceParser(housePricePath);
             _lowerLayerSupportOutputAreaCodeToWardCodeParser = new LowerLayerSuperOutputAreaCodeToWardCodeParser(lowerLayerSuperOutputAreaToWardPath);
+            _algorithms = new List<IAlgorithm>
+            {
+                new SelectTopDecileAndSortByPriceAlgorithm(),
+            };
         }
 
         public void Start()
         {
             var lowerLayerSuperOutputAreas = _lowerLayerSuperOutputAreaParser.Parse();
-            foreach (var lowerLayerSuperOutputArea in lowerLayerSuperOutputAreas)
-            {
-                //Console.WriteLine(lowerLayerSuperOutputArea);
-            }
-
             var housePrices = _housePriceParser.Parse();
-            foreach (var housePrice in housePrices)
-            {
-                Console.WriteLine(housePrice);
-            }
-
             var lowerLayerSupportOutputAreaCodesToWardCodes = _lowerLayerSupportOutputAreaCodeToWardCodeParser.KeyValueParse();
-            foreach (var kv in lowerLayerSupportOutputAreaCodesToWardCodes)
+            
+            foreach (var algorithm in _algorithms)
             {
-                //Console.WriteLine(kv);
+                algorithm.Execute(lowerLayerSuperOutputAreas, lowerLayerSupportOutputAreaCodesToWardCodes, housePrices);
             }
         }
     }
