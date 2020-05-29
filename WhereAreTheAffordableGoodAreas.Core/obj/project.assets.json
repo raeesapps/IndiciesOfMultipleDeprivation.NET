@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/raees/RiderProjects/WhereAreTheAffordableGoodAreas/WhereAreTheAffordableGoodAreas/WhereAreTheAffordableGoodAreas.csproj",
-      "projectName": "WhereAreTheAffordableGoodAreas",
-      "projectPath": "/Users/raees/RiderProjects/WhereAreTheAffordableGoodAreas/WhereAreTheAffordableGoodAreas/WhereAreTheAffordableGoodAreas.csproj",
+      "projectUniqueName": "/Users/raees/RiderProjects/WhereAreTheAffordableGoodAreas/WhereAreTheAffordableGoodAreas.Core/WhereAreTheAffordableGoodAreas.Core.csproj",
+      "projectName": "WhereAreTheAffordableGoodAreas.Core",
+      "projectPath": "/Users/raees/RiderProjects/WhereAreTheAffordableGoodAreas/WhereAreTheAffordableGoodAreas.Core/WhereAreTheAffordableGoodAreas.Core.csproj",
       "packagesPath": "/Users/raees/.nuget/packages/",
-      "outputPath": "/Users/raees/RiderProjects/WhereAreTheAffordableGoodAreas/WhereAreTheAffordableGoodAreas/obj/",
+      "outputPath": "/Users/raees/RiderProjects/WhereAreTheAffordableGoodAreas/WhereAreTheAffordableGoodAreas.Core/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/raees/.nuget/NuGet/NuGet.Config"

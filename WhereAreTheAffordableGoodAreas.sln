@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereAreTheAffordableGoodAreas", "WhereAreTheAffordableGoodAreas\WhereAreTheAffordableGoodAreas.csproj", "{BAF2DA4C-3DFD-4257-84DF-E31C7E08C95E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereAreTheAffordableGoodAreas.Core", "WhereAreTheAffordableGoodAreas.Core\WhereAreTheAffordableGoodAreas.Core.csproj", "{BAF2DA4C-3DFD-4257-84DF-E31C7E08C95E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
