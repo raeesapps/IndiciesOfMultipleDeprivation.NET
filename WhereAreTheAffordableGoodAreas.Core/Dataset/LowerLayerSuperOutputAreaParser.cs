@@ -15,7 +15,7 @@ namespace WhereAreTheAffordableGoodAreas.Dataset
 
         public IEnumerable<LowerLayerSuperOutputArea> Parse()
         {
-            var _lowerLayerSuperOutputAreas = new List<LowerLayerSuperOutputArea>();
+            var lowerLayerSuperOutputAreas = new List<LowerLayerSuperOutputArea>();
 
             using var csvParser = new TextFieldParser(_path);
             csvParser.CommentTokens = new string[] { "#" };
@@ -55,10 +55,10 @@ namespace WhereAreTheAffordableGoodAreas.Dataset
                     IndexOfMultipleDeprivation = indexOfMultipleDeprivation,
                 };
                     
-                _lowerLayerSuperOutputAreas.Add(lowerLayerSuperOutputArea);
+                lowerLayerSuperOutputAreas.Add(lowerLayerSuperOutputArea);
             }
 
-            return _lowerLayerSuperOutputAreas;
+            return lowerLayerSuperOutputAreas;
         }
     }
 }
