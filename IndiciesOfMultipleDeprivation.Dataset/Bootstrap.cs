@@ -5,22 +5,22 @@ using IndiciesOfMultipleDeprivation.Parser;
 
 namespace IndiciesOfMultipleDeprivation
 {
-    public class Bootstrap
+    public class Bootstrap : IBootstrap
     {
         private readonly ILinearParser<LowerLayerSuperOutputArea> _lowerLayerSuperOutputAreaParser;
         private readonly ILinearParser<HousePrice> _housePriceParser;
         private readonly IKeyValueParser<string, string> _lowerLayerSupportOutputAreaCodeToWardCodeParser;
         private readonly IEnumerable<IAlgorithm> _algorithms;
 
-        public Bootstrap(string lowerLayerSuperOutputAreaPath, string housePricePath, string lowerLayerSuperOutputAreaToWardPath)
+        public Bootstrap(ILinearParser<LowerLayerSuperOutputArea> lowerLayerSuperOutputAreaParser,
+            ILinearParser<HousePrice> housePriceParser,
+            IKeyValueParser<string, string> lowerLayerSupportOutputAreaCodeToWardCodeParser,
+            IEnumerable<IAlgorithm> algorithms)
         {
-            _lowerLayerSuperOutputAreaParser = new LowerLayerSuperOutputAreaParser(lowerLayerSuperOutputAreaPath);
-            _housePriceParser = new HousePriceParser(housePricePath);
-            _lowerLayerSupportOutputAreaCodeToWardCodeParser = new LowerLayerSuperOutputAreaCodeToWardCodeParser(lowerLayerSuperOutputAreaToWardPath);
-            _algorithms = new List<IAlgorithm>
-            {
-                new SelectByMeanDecileFilterLessThanOr7SortByMeanPriceAlgorithm(),
-            };
+            _lowerLayerSuperOutputAreaParser = lowerLayerSuperOutputAreaParser;
+            _housePriceParser = housePriceParser;
+            _lowerLayerSupportOutputAreaCodeToWardCodeParser = lowerLayerSupportOutputAreaCodeToWardCodeParser;
+            _algorithms = algorithms;
         }
 
         public void Start()
