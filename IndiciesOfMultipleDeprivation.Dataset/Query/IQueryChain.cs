@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using IndiciesOfMultipleDeprivation.Models;
 
-namespace IndiciesOfMultipleDeprivation.Queries
+namespace IndiciesOfMultipleDeprivation.Query
 {
     public interface IQueryChain
     {
-        public void Execute(IEnumerable<object> input, Dataset dataset);
+        public IEnumerable<object> Execute(IEnumerable<object> input, Dataset dataset);
     }
 }

@@ -1,10 +1,15 @@
 using System.Collections.Generic;
 
-namespace IndiciesOfMultipleDeprivation.Queries
+namespace IndiciesOfMultipleDeprivation.Query
 {
     public class QueryChainBuilder : IQueryChainBuilder
     {
         public IList<IQuery> Queries { get; set; }
+
+        public QueryChainBuilder(IList<IQuery> queries)
+        {
+            Queries = queries;
+        }
         
         public IQueryChain Build()
         {

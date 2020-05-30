@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace IndiciesOfMultipleDeprivation.Queries
+namespace IndiciesOfMultipleDeprivation.Query
 {
     public interface IQueryChainBuilder
     {
