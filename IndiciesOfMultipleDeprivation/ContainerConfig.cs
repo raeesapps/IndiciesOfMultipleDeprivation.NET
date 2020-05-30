@@ -33,7 +33,10 @@ namespace IndiciesOfMultipleDeprivation
                         lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath))
                 .As<IKeyValueParser<string, string>>();
             
-            builder.RegisterType<GetGoodAreasTask>().As<ITask>();
+            builder
+                .RegisterAssemblyTypes(Assembly.Load(nameof(IndiciesOfMultipleDeprivation)))
+                .Where((t) => t.Namespace != null && t.Namespace.Contains("Tasks"))
+                .As<ITask>();
             builder.RegisterType<QueryChainBuilder>().As<IQueryChainBuilder>();
 
             return builder.Build();
