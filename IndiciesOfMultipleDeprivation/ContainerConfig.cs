@@ -1,5 +1,5 @@
+using System.Reflection;
 using Autofac;
-using IndiciesOfMultipleDeprivation.Algorithms;
 using IndiciesOfMultipleDeprivation.Models;
 using IndiciesOfMultipleDeprivation.Parser;
 using IndiciesOfMultipleDeprivation.Query;
@@ -8,7 +8,7 @@ using IndiciesOfMultipleDeprivation.Task.Tasks;
 
 namespace IndiciesOfMultipleDeprivation
 {
-    public class ContainerConfig
+    public static class ContainerConfig
     {
         public static IContainer Configure()
         {
@@ -32,7 +32,7 @@ namespace IndiciesOfMultipleDeprivation
                     new LowerLayerSuperOutputAreaCodeToWardCodeParser(
                         lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath))
                 .As<IKeyValueParser<string, string>>();
-
+            
             builder.RegisterType<GetGoodAreasTask>().As<ITask>();
             builder.RegisterType<QueryChainBuilder>().As<IQueryChainBuilder>();
 
