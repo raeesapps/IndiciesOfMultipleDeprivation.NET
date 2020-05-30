@@ -2,6 +2,9 @@ using Autofac;
 using IndiciesOfMultipleDeprivation.Algorithms;
 using IndiciesOfMultipleDeprivation.Models;
 using IndiciesOfMultipleDeprivation.Parser;
+using IndiciesOfMultipleDeprivation.Query;
+using IndiciesOfMultipleDeprivation.Task;
+using IndiciesOfMultipleDeprivation.Task.Tasks;
 
 namespace IndiciesOfMultipleDeprivation
 {
@@ -17,7 +20,7 @@ namespace IndiciesOfMultipleDeprivation
             var builder = new ContainerBuilder();
             
             builder.RegisterType<Bootstrap>().As<IBootstrap>();
-            
+
             builder
                 .Register((context) => new LowerLayerSuperOutputAreaParser(lowerLayerSuperOutputAreaDatasetPath))
                 .As<ILinearParser<LowerLayerSuperOutputArea>>();
@@ -30,9 +33,9 @@ namespace IndiciesOfMultipleDeprivation
                         lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath))
                 .As<IKeyValueParser<string, string>>();
 
-            builder.RegisterType<SelectTopDecileAndSortByPriceAlgorithm>().As<IAlgorithm>();
-            builder.RegisterType<SelectByMeanDecileFilterLessThanOr7SortByMeanPriceAlgorithm>().As<IAlgorithm>();
-            
+            builder.RegisterType<GetGoodAreasTask>().As<ITask>();
+            builder.RegisterType<QueryChainBuilder>().As<IQueryChainBuilder>();
+
             return builder.Build();
         }
     }
