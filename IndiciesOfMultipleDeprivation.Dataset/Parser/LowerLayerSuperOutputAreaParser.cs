@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
-using WhereAreTheAffordableGoodAreas.Models;
+using IndiciesOfMultipleDeprivation.Models;
 
-namespace WhereAreTheAffordableGoodAreas.Parser
+namespace IndiciesOfMultipleDeprivation.Parser
 {
     public class LowerLayerSuperOutputAreaParser : CsvParser<LowerLayerSuperOutputArea, object>
     {

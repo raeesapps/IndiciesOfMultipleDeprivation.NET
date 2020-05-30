@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json;
 
-namespace WhereAreTheAffordableGoodAreas.Models
+namespace IndiciesOfMultipleDeprivation.Models
 {
     public class LocalAuthorityDistrict : IEquatable<LocalAuthorityDistrict>
     {

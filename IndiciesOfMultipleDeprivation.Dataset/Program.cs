@@ -1,6 +1,4 @@
-using System;
-
-namespace WhereAreTheAffordableGoodAreas
+namespace IndiciesOfMultipleDeprivation
 {
     class Program
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using WhereAreTheAffordableGoodAreas.Models;
+using IndiciesOfMultipleDeprivation.Models;
 
-namespace WhereAreTheAffordableGoodAreas.Algorithms
+namespace IndiciesOfMultipleDeprivation.Algorithms
 {
     public interface IAlgorithm
     {

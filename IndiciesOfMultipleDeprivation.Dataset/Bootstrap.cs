@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using WhereAreTheAffordableGoodAreas.Algorithms;
-using WhereAreTheAffordableGoodAreas.Models;
-using WhereAreTheAffordableGoodAreas.Parser;
+using IndiciesOfMultipleDeprivation.Algorithms;
+using IndiciesOfMultipleDeprivation.Models;
+using IndiciesOfMultipleDeprivation.Parser;
 
-namespace WhereAreTheAffordableGoodAreas
+namespace IndiciesOfMultipleDeprivation
 {
     public class Bootstrap
     {

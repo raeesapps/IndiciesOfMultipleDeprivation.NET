@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WhereAreTheAffordableGoodAreas.Parser
+namespace IndiciesOfMultipleDeprivation.Parser
 {
     public interface ILinearParser<T>
     {

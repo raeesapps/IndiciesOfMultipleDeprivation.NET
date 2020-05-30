@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualBasic.FileIO;
 
-namespace WhereAreTheAffordableGoodAreas.Parser
+namespace IndiciesOfMultipleDeprivation.Parser
 {
     public abstract class CsvParser<K, V> : ILinearParser<K>, IKeyValueParser<K, V>
     {

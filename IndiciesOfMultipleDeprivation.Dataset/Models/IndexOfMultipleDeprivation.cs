@@ -1,11 +1,11 @@
 using System.Text.Json;
 
-namespace WhereAreTheAffordableGoodAreas.Models
+namespace IndiciesOfMultipleDeprivation.Models
 {
-    public class Ward
+    public class IndexOfMultipleDeprivation
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
+        public int Rank { get; set; }
+        public int Decile { get; set; }
         
         public override string ToString()
         {

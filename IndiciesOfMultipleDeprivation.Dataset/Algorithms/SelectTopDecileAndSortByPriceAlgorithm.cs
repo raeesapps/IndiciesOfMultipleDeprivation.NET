@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WhereAreTheAffordableGoodAreas.Models;
+using IndiciesOfMultipleDeprivation.Models;
 
-namespace WhereAreTheAffordableGoodAreas.Algorithms
+namespace IndiciesOfMultipleDeprivation.Algorithms
 {
     public class SelectTopDecileAndSortByPriceAlgorithm : IAlgorithm
     {
