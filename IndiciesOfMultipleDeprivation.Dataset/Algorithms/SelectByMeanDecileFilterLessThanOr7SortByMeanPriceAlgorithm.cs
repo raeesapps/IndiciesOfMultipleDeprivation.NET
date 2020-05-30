@@ -45,7 +45,7 @@ namespace IndiciesOfMultipleDeprivation.Algorithms
                 var meanOfAllLowerLayerSuperOutputAreaDeciles =
                     ((double) sumOfAllLowerLayerSuperOutputAreaDeciles) / n;
                 
-                if (meanOfAllLowerLayerSuperOutputAreaDeciles < 8)
+                if (meanOfAllLowerLayerSuperOutputAreaDeciles < 7)
                 {
                     continue;
                 }
