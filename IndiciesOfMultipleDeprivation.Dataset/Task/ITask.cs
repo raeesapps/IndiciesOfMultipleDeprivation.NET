@@ -1,4 +1,9 @@
-$HEADER$namespace $NAMESPACE$
+using IndiciesOfMultipleDeprivation.Models;
+
+namespace IndiciesOfMultipleDeprivation.Task
 {
-  public class $CLASS$ {$END$}
+    public interface ITask
+    {
+        public void Run(Dataset dataset);
+    }
 }
