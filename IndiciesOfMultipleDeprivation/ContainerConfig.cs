@@ -43,7 +43,7 @@ namespace IndiciesOfMultipleDeprivation
                 .Where((t) => t.Namespace != null && t.Namespace.Contains("Tasks"))
                 .As<ITask>();
             
-            builder.RegisterType<QueryChainBuilder>().As<IQueryChainBuilder>();
+            builder.RegisterType<QueryChain>().As<IQueryChain>();
 
             return builder.Build();
         }

@@ -8,7 +8,7 @@ namespace IndiciesOfMultipleDeprivation.Task.Tasks
 {
     public class GetGoodAreasTask : ITask
     {
-        private readonly IQueryChainBuilder _queryChainBuilder;
+        private readonly IQueryChain _queryChain;
         
         private readonly IFilterLowerLayerSuperOutputAreasByDecileQuery _filterLowerLayerSuperOutputAreasByDecileQuery;
         
@@ -17,12 +17,12 @@ namespace IndiciesOfMultipleDeprivation.Task.Tasks
 
         private readonly ISortHousePricesByAverageHousePricesQuery _sortHousePricesByAverageHousePricesQuery;
 
-        public GetGoodAreasTask(IQueryChainBuilder queryChainBuilder,
+        public GetGoodAreasTask(IQueryChain queryChain,
             IFilterLowerLayerSuperOutputAreasByDecileQuery filterLowerLayerSuperOutputAreasByDecileQuery,
             IGetHousePricesOfLowerLayerSuperOutputAreasQuery getHousePricesOfLowerLayerSuperOutputAreasQuery,
             ISortHousePricesByAverageHousePricesQuery sortHousePricesByAverageHousePricesQuery)
         {
-            _queryChainBuilder = queryChainBuilder;
+            _queryChain = queryChain;
             _filterLowerLayerSuperOutputAreasByDecileQuery = filterLowerLayerSuperOutputAreasByDecileQuery;
             _getHousePricesOfLowerLayerSuperOutputAreasQuery = getHousePricesOfLowerLayerSuperOutputAreasQuery;
             _sortHousePricesByAverageHousePricesQuery = sortHousePricesByAverageHousePricesQuery;
@@ -30,12 +30,12 @@ namespace IndiciesOfMultipleDeprivation.Task.Tasks
 
         public void Run(Dataset dataset)
         {
+            _queryChain.Queries.Add(_filterLowerLayerSuperOutputAreasByDecileQuery);
+            _queryChain.Queries.Add(_getHousePricesOfLowerLayerSuperOutputAreasQuery);
+            _queryChain.Queries.Add(_sortHousePricesByAverageHousePricesQuery);
+
             var result =
-                _queryChainBuilder
-                    .Add(_filterLowerLayerSuperOutputAreasByDecileQuery)
-                    .Add(_getHousePricesOfLowerLayerSuperOutputAreasQuery)
-                    .Add(_sortHousePricesByAverageHousePricesQuery)
-                    .Build()
+                _queryChain
                     .Execute(null, dataset)
                     .ToList();
 

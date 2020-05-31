@@ -5,17 +5,17 @@ namespace IndiciesOfMultipleDeprivation.Query
 {
     public class QueryChain : IQueryChain
     {
-        private readonly IEnumerable<IQuery> _queries;
+        public IList<IQuery> Queries { get; set; }
 
-        public QueryChain(IQueryChainBuilder builder)
+        public QueryChain(IList<IQuery> queries)
         {
-            _queries = builder.Queries;
+            Queries = queries;
         }
         
         public IEnumerable<object> Execute(IEnumerable<object> input, Dataset dataset)
         {
             IEnumerable<object> previousResult = null;
-            foreach (var query in _queries)
+            foreach (var query in Queries)
             {
                 var queryResult = query.Compute(previousResult, dataset);
                 previousResult = queryResult;
