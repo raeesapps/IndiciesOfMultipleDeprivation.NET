@@ -1,10 +1,10 @@
+using System.Linq;
 using System.Reflection;
 using Autofac;
 using IndiciesOfMultipleDeprivation.Models;
 using IndiciesOfMultipleDeprivation.Parser;
 using IndiciesOfMultipleDeprivation.Query;
 using IndiciesOfMultipleDeprivation.Task;
-using IndiciesOfMultipleDeprivation.Task.Tasks;
 
 namespace IndiciesOfMultipleDeprivation
 {
@@ -32,11 +32,17 @@ namespace IndiciesOfMultipleDeprivation
                     new LowerLayerSuperOutputAreaCodeToWardCodeParser(
                         lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath))
                 .As<IKeyValueParser<string, string>>();
+
+            builder
+                .RegisterAssemblyTypes(Assembly.Load(nameof(IndiciesOfMultipleDeprivation)))
+                .Where((t) => t.Namespace != null && t.Namespace.Contains("Queries") && t.IsClass)
+                .As((t) => t.GetInterfaces().FirstOrDefault((i) => i.Name == "I" + t.Name));
             
             builder
                 .RegisterAssemblyTypes(Assembly.Load(nameof(IndiciesOfMultipleDeprivation)))
                 .Where((t) => t.Namespace != null && t.Namespace.Contains("Tasks"))
                 .As<ITask>();
+            
             builder.RegisterType<QueryChainBuilder>().As<IQueryChainBuilder>();
 
             return builder.Build();
