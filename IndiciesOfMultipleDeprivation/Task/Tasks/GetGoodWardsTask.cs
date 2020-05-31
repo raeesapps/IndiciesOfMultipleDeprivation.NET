@@ -9,19 +9,32 @@ namespace IndiciesOfMultipleDeprivation.Task.Tasks
     public class GetGoodAreasTask : ITask
     {
         private readonly IQueryChainBuilder _queryChainBuilder;
+        
+        private readonly IFilterLowerLayerSuperOutputAreasByDecileQuery _filterLowerLayerSuperOutputAreasByDecileQuery;
+        
+        private readonly IGetHousePricesOfLowerLayerSuperOutputAreasQuery
+            _getHousePricesOfLowerLayerSuperOutputAreasQuery;
 
-        public GetGoodAreasTask(IQueryChainBuilder queryChainBuilder)
+        private readonly ISortHousePricesByAverageHousePricesQuery _sortHousePricesByAverageHousePricesQuery;
+
+        public GetGoodAreasTask(IQueryChainBuilder queryChainBuilder,
+            IFilterLowerLayerSuperOutputAreasByDecileQuery filterLowerLayerSuperOutputAreasByDecileQuery,
+            IGetHousePricesOfLowerLayerSuperOutputAreasQuery getHousePricesOfLowerLayerSuperOutputAreasQuery,
+            ISortHousePricesByAverageHousePricesQuery sortHousePricesByAverageHousePricesQuery)
         {
             _queryChainBuilder = queryChainBuilder;
+            _filterLowerLayerSuperOutputAreasByDecileQuery = filterLowerLayerSuperOutputAreasByDecileQuery;
+            _getHousePricesOfLowerLayerSuperOutputAreasQuery = getHousePricesOfLowerLayerSuperOutputAreasQuery;
+            _sortHousePricesByAverageHousePricesQuery = sortHousePricesByAverageHousePricesQuery;
         }
-        
+
         public void Run(Dataset dataset)
         {
             var result =
                 _queryChainBuilder
-                    .Add(new FilterLowerLayerSuperOutputAreasByDecileQuery())
-                    .Add(new GetHousePricesOfLowerLayerSuperOutputAreasQuery())
-                    .Add(new SortHousePricesByAverageHousePricesQuery())
+                    .Add(_filterLowerLayerSuperOutputAreasByDecileQuery)
+                    .Add(_getHousePricesOfLowerLayerSuperOutputAreasQuery)
+                    .Add(_sortHousePricesByAverageHousePricesQuery)
                     .Build()
                     .Execute(null, dataset)
                     .ToList();
