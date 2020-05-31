@@ -4,7 +4,7 @@ using IndiciesOfMultipleDeprivation.Models;
 
 namespace IndiciesOfMultipleDeprivation.Query.Queries
 {
-    public class FilterLowerLayerSuperOutputAreasByDecileQuery : IQuery
+    public class FilterLowerLayerSuperOutputAreasByDecileQuery : IFilterLowerLayerSuperOutputAreasByDecileQuery
     {
         public IEnumerable<object> Compute(IEnumerable<object> input, Dataset dataset)
         {

@@ -5,7 +5,7 @@ using IndiciesOfMultipleDeprivation.Models;
 
 namespace IndiciesOfMultipleDeprivation.Query.Queries
 {
-    public class GetHousePricesOfLowerLayerSuperOutputAreasQuery : IQuery
+    public class GetHousePricesOfLowerLayerSuperOutputAreasQuery : IGetHousePricesOfLowerLayerSuperOutputAreasQuery
     {
         private const string InputNotProvidedExceptionMessage = "No input enumerable provided!";
 
