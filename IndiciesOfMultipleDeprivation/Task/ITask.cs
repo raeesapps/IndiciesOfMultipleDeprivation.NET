@@ -1,4 +1,4 @@
-using IndiciesOfMultipleDeprivation.Models;
+using IndiciesOfMultipleDeprivation.Model;
 
 namespace IndiciesOfMultipleDeprivation.Task
 {

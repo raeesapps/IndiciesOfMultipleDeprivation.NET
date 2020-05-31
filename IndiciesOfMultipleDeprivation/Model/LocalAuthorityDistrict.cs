@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json;
 
-namespace IndiciesOfMultipleDeprivation.Models
+namespace IndiciesOfMultipleDeprivation.Model
 {
     public class LocalAuthorityDistrict : IEquatable<LocalAuthorityDistrict>
     {

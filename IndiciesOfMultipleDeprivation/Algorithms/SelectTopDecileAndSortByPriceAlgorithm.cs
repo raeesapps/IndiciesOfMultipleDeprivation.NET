@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using IndiciesOfMultipleDeprivation.Models;
+using IndiciesOfMultipleDeprivation.Model;
 
 namespace IndiciesOfMultipleDeprivation.Algorithms
 {

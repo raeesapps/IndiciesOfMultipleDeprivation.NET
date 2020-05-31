@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Reflection;
 using Autofac;
-using IndiciesOfMultipleDeprivation.Models;
+using IndiciesOfMultipleDeprivation.Model;
 using IndiciesOfMultipleDeprivation.Parser;
 using IndiciesOfMultipleDeprivation.Query;
 using IndiciesOfMultipleDeprivation.Task;

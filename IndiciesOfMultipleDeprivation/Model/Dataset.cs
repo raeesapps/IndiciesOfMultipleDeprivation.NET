@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace IndiciesOfMultipleDeprivation.Models
+namespace IndiciesOfMultipleDeprivation.Model
 {
     public class Dataset
     {

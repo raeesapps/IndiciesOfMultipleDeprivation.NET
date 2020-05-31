@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using IndiciesOfMultipleDeprivation.Models;
+using IndiciesOfMultipleDeprivation.Model;
 using IndiciesOfMultipleDeprivation.Query;
 using IndiciesOfMultipleDeprivation.Query.Queries;
 
