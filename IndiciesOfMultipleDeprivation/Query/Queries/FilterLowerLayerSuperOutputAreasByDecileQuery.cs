@@ -10,7 +10,8 @@ namespace IndiciesOfMultipleDeprivation.Query.Queries
         {
             var filteredLowerLayerSuperOutputAreas =
                 dataset.LowerLayerSuperOutputAreas.Where((lowerLayerSuperOutputArea) =>
-                    lowerLayerSuperOutputArea.IndexOfMultipleDeprivation.Decile >= 7 && lowerLayerSuperOutputArea.IndexOfMultipleDeprivation.Decile <= 10);
+                    lowerLayerSuperOutputArea.IndexOfMultipleDeprivation.Decile >= 7 &&
+                    lowerLayerSuperOutputArea.IndexOfMultipleDeprivation.Decile <= 10);
 
             return filteredLowerLayerSuperOutputAreas;
         }
