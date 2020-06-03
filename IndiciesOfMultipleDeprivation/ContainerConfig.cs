@@ -7,7 +7,6 @@ using IndiciesOfMultipleDeprivation.Parser;
 using IndiciesOfMultipleDeprivation.Query;
 using IndiciesOfMultipleDeprivation.Task;
 using Microsoft.VisualBasic.FileIO;
-using RegistrationExtensions = Autofac.Features.AttributeFilters.RegistrationExtensions;
 
 namespace IndiciesOfMultipleDeprivation
 {
