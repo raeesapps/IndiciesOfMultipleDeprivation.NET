@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Autofac.Features.AttributeFilters;
-using Microsoft.VisualBasic.FileIO;
 
 namespace IndiciesOfMultipleDeprivation.Parser
 {
@@ -8,7 +7,7 @@ namespace IndiciesOfMultipleDeprivation.Parser
     {
         public LowerLayerSuperOutputAreaCodeToWardCodeParser(
             [KeyFilter("lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath")]
-            TextFieldParser textFieldParser) : base(textFieldParser)
+            ITextFieldParser textFieldParser) : base(textFieldParser)
         {
         }
 

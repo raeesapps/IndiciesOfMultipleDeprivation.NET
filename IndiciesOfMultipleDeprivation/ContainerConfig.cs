@@ -23,13 +23,15 @@ namespace IndiciesOfMultipleDeprivation
             var builder = new ContainerBuilder();
             
             builder.RegisterType<Bootstrap>().As<IBootstrap>();
-            
-            builder.Register((ctx) => new TextFieldParser(lowerLayerSuperOutputAreaDatasetPath))
-                .Named<TextFieldParser>(nameof(lowerLayerSuperOutputAreaDatasetPath));
-            builder.Register((ctx) => new TextFieldParser(housePriceDatasetPath))
-                .Named<TextFieldParser>(nameof(housePriceDatasetPath));
-            builder.Register((ctx) => new TextFieldParser(lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath))
-                .Named<TextFieldParser>(nameof(lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath));
+
+            builder.Register((ctx) =>
+                    new TextFieldParserWrapper(new TextFieldParser(lowerLayerSuperOutputAreaDatasetPath)))
+                .Named<ITextFieldParser>(nameof(lowerLayerSuperOutputAreaDatasetPath));
+            builder.Register((ctx) => new TextFieldParserWrapper(new TextFieldParser(housePriceDatasetPath)))
+                .Named<ITextFieldParser>(nameof(housePriceDatasetPath));
+            builder.Register((ctx) =>
+                    new TextFieldParserWrapper(new TextFieldParser(lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath)))
+                .Named<ITextFieldParser>(nameof(lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath));
             
             builder.RegisterType<LowerLayerSuperOutputAreaParser>().As<ILinearParser<LowerLayerSuperOutputArea>>().WithAttributeFiltering();
             builder.RegisterType<HousePriceParser>().As<ILinearParser<HousePrice>>().WithAttributeFiltering();

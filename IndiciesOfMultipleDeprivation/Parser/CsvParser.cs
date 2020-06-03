@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using Microsoft.VisualBasic.FileIO;
 
 namespace IndiciesOfMultipleDeprivation.Parser
 {
     public abstract class CsvParser<K, V> : ILinearParser<K>, IKeyValueParser<K, V>
     {
-        private readonly TextFieldParser _textFieldParser;
+        private readonly ITextFieldParser _textFieldParser;
 
-        public CsvParser(TextFieldParser textFieldParser)
+        public CsvParser(ITextFieldParser textFieldParser)
         {
             _textFieldParser = textFieldParser;
         }
