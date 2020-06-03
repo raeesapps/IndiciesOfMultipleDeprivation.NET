@@ -1,10 +1,14 @@
 using System.Collections.Generic;
+using Autofac.Features.AttributeFilters;
+using Microsoft.VisualBasic.FileIO;
 
 namespace IndiciesOfMultipleDeprivation.Parser
 {
     public class LowerLayerSuperOutputAreaCodeToWardCodeParser : CsvParser<string, string>
     {
-        public LowerLayerSuperOutputAreaCodeToWardCodeParser(string path) : base(path)
+        public LowerLayerSuperOutputAreaCodeToWardCodeParser(
+            [KeyFilter("lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath")]
+            TextFieldParser textFieldParser) : base(textFieldParser)
         {
         }
 

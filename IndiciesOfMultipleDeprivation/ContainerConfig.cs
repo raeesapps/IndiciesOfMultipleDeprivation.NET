@@ -1,10 +1,13 @@
 using System.Linq;
 using System.Reflection;
 using Autofac;
+using Autofac.Features.AttributeFilters;
 using IndiciesOfMultipleDeprivation.Model;
 using IndiciesOfMultipleDeprivation.Parser;
 using IndiciesOfMultipleDeprivation.Query;
 using IndiciesOfMultipleDeprivation.Task;
+using Microsoft.VisualBasic.FileIO;
+using RegistrationExtensions = Autofac.Features.AttributeFilters.RegistrationExtensions;
 
 namespace IndiciesOfMultipleDeprivation
 {
@@ -20,18 +23,17 @@ namespace IndiciesOfMultipleDeprivation
             var builder = new ContainerBuilder();
             
             builder.RegisterType<Bootstrap>().As<IBootstrap>();
-
-            builder
-                .Register((context) => new LowerLayerSuperOutputAreaParser(lowerLayerSuperOutputAreaDatasetPath))
-                .As<ILinearParser<LowerLayerSuperOutputArea>>();
-            builder
-                .Register((context) => new HousePriceParser(housePriceDatasetPath))
-                .As<ILinearParser<HousePrice>>();
-            builder
-                .Register((context) =>
-                    new LowerLayerSuperOutputAreaCodeToWardCodeParser(
-                        lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath))
-                .As<IKeyValueParser<string, string>>();
+            
+            builder.Register((ctx) => new TextFieldParser(lowerLayerSuperOutputAreaDatasetPath))
+                .Named<TextFieldParser>(nameof(lowerLayerSuperOutputAreaDatasetPath));
+            builder.Register((ctx) => new TextFieldParser(housePriceDatasetPath))
+                .Named<TextFieldParser>(nameof(housePriceDatasetPath));
+            builder.Register((ctx) => new TextFieldParser(lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath))
+                .Named<TextFieldParser>(nameof(lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath));
+            
+            builder.RegisterType<LowerLayerSuperOutputAreaParser>().As<ILinearParser<LowerLayerSuperOutputArea>>().WithAttributeFiltering();
+            builder.RegisterType<HousePriceParser>().As<ILinearParser<HousePrice>>().WithAttributeFiltering();
+            builder.RegisterType<LowerLayerSuperOutputAreaCodeToWardCodeParser>().As<IKeyValueParser<string, string>>().WithAttributeFiltering();
 
             builder
                 .RegisterAssemblyTypes(Assembly.Load(nameof(IndiciesOfMultipleDeprivation)))

@@ -5,25 +5,24 @@ namespace IndiciesOfMultipleDeprivation.Parser
 {
     public abstract class CsvParser<K, V> : ILinearParser<K>, IKeyValueParser<K, V>
     {
-        private readonly string _path;
+        private readonly TextFieldParser _textFieldParser;
 
-        public CsvParser(string path)
+        public CsvParser(TextFieldParser textFieldParser)
         {
-            _path = path;
+            _textFieldParser = textFieldParser;
         }
 
         private void ReadCsvPath(IList<K> list, IDictionary<K, V> dictionary)
         {
-            using var csvParser = new TextFieldParser(_path);
-            csvParser.CommentTokens = new string[] { "#" };
-            csvParser.SetDelimiters(new string[] { "," });
-            csvParser.HasFieldsEnclosedInQuotes = true;
+            _textFieldParser.CommentTokens = new string[] { "#" };
+            _textFieldParser.SetDelimiters(new string[] { "," });
+            _textFieldParser.HasFieldsEnclosedInQuotes = true;
 
-            csvParser.ReadLine();
+            _textFieldParser.ReadLine();
 
-            while (!csvParser.EndOfData)
+            while (!_textFieldParser.EndOfData)
             {
-                var fields = csvParser.ReadFields();
+                var fields = _textFieldParser.ReadFields();
 
                 if (list == null && dictionary != null)
                 {
