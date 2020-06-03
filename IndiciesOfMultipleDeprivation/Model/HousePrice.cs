@@ -1,13 +1,12 @@
 using System.Text.Json;
 
-namespace IndiciesOfMultipleDeprivation.Models
+namespace IndiciesOfMultipleDeprivation.Model
 {
-    public class LowerLayerSuperOutputArea
+    public class HousePrice
     {
-        public string Code { get; set; }
-        public string Name { get; set; }
         public LocalAuthorityDistrict LocalAuthorityDistrict { get; set; }
-        public IndexOfMultipleDeprivation IndexOfMultipleDeprivation { get; set; }
+        public Ward Ward { get; set; }
+        public double AverageHousePrice { get; set; }
         
         public override string ToString()
         {

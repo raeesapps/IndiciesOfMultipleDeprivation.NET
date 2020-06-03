@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using IndiciesOfMultipleDeprivation.Models;
+using IndiciesOfMultipleDeprivation.Model;
 
 namespace IndiciesOfMultipleDeprivation.Parser
 {

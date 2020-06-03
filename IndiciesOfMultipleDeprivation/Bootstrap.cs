@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using IndiciesOfMultipleDeprivation.Algorithms;
-using IndiciesOfMultipleDeprivation.Models;
+using IndiciesOfMultipleDeprivation.Model;
 using IndiciesOfMultipleDeprivation.Parser;
+using IndiciesOfMultipleDeprivation.Task;
 
 namespace IndiciesOfMultipleDeprivation
 {
@@ -10,17 +10,17 @@ namespace IndiciesOfMultipleDeprivation
         private readonly ILinearParser<LowerLayerSuperOutputArea> _lowerLayerSuperOutputAreaParser;
         private readonly ILinearParser<HousePrice> _housePriceParser;
         private readonly IKeyValueParser<string, string> _lowerLayerSupportOutputAreaCodeToWardCodeParser;
-        private readonly IEnumerable<IAlgorithm> _algorithms;
+        private readonly IEnumerable<ITask> _tasks;
 
         public Bootstrap(ILinearParser<LowerLayerSuperOutputArea> lowerLayerSuperOutputAreaParser,
             ILinearParser<HousePrice> housePriceParser,
             IKeyValueParser<string, string> lowerLayerSupportOutputAreaCodeToWardCodeParser,
-            IEnumerable<IAlgorithm> algorithms)
+            IEnumerable<ITask> tasks)
         {
             _lowerLayerSuperOutputAreaParser = lowerLayerSuperOutputAreaParser;
             _housePriceParser = housePriceParser;
             _lowerLayerSupportOutputAreaCodeToWardCodeParser = lowerLayerSupportOutputAreaCodeToWardCodeParser;
-            _algorithms = algorithms;
+            _tasks = tasks;
         }
 
         public void Start()
@@ -28,10 +28,16 @@ namespace IndiciesOfMultipleDeprivation
             var lowerLayerSuperOutputAreas = _lowerLayerSuperOutputAreaParser.Parse();
             var housePrices = _housePriceParser.Parse();
             var lowerLayerSupportOutputAreaCodesToWardCodes = _lowerLayerSupportOutputAreaCodeToWardCodeParser.KeyValueParse();
-            
-            foreach (var algorithm in _algorithms)
+            var dataset = new Dataset
             {
-                algorithm.Execute(lowerLayerSuperOutputAreas, lowerLayerSupportOutputAreaCodesToWardCodes, housePrices);
+                LowerLayerSuperOutputAreas = lowerLayerSuperOutputAreas,
+                LowerLayerSuperOutputAreaCodeToWardCode = lowerLayerSupportOutputAreaCodesToWardCodes,
+                HousePrices = housePrices,
+            };
+            
+            foreach (var task in _tasks)
+            {
+                task.Run(dataset);
             }
         }
     }

@@ -1,11 +1,14 @@
+using System.Linq;
+using System.Reflection;
 using Autofac;
-using IndiciesOfMultipleDeprivation.Algorithms;
-using IndiciesOfMultipleDeprivation.Models;
+using IndiciesOfMultipleDeprivation.Model;
 using IndiciesOfMultipleDeprivation.Parser;
+using IndiciesOfMultipleDeprivation.Query;
+using IndiciesOfMultipleDeprivation.Task;
 
 namespace IndiciesOfMultipleDeprivation
 {
-    public class ContainerConfig
+    public static class ContainerConfig
     {
         public static IContainer Configure()
         {
@@ -17,7 +20,7 @@ namespace IndiciesOfMultipleDeprivation
             var builder = new ContainerBuilder();
             
             builder.RegisterType<Bootstrap>().As<IBootstrap>();
-            
+
             builder
                 .Register((context) => new LowerLayerSuperOutputAreaParser(lowerLayerSuperOutputAreaDatasetPath))
                 .As<ILinearParser<LowerLayerSuperOutputArea>>();
@@ -30,9 +33,18 @@ namespace IndiciesOfMultipleDeprivation
                         lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath))
                 .As<IKeyValueParser<string, string>>();
 
-            builder.RegisterType<SelectTopDecileAndSortByPriceAlgorithm>().As<IAlgorithm>();
-            builder.RegisterType<SelectByMeanDecileFilterLessThanOr7SortByMeanPriceAlgorithm>().As<IAlgorithm>();
+            builder
+                .RegisterAssemblyTypes(Assembly.Load(nameof(IndiciesOfMultipleDeprivation)))
+                .Where((t) => t.Namespace != null && t.Namespace.Contains("Queries") && t.IsClass)
+                .As((t) => t.GetInterfaces().FirstOrDefault((i) => i.Name == "I" + t.Name));
             
+            builder
+                .RegisterAssemblyTypes(Assembly.Load(nameof(IndiciesOfMultipleDeprivation)))
+                .Where((t) => t.Namespace != null && t.Namespace.Contains("Tasks"))
+                .As<ITask>();
+            
+            builder.RegisterType<QueryChain>().As<IQueryChain>();
+
             return builder.Build();
         }
     }
