@@ -31,10 +31,10 @@ namespace IndiciesOfMultipleDeprivation.Api
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            var lowerLayerSuperOutputAreaDatasetPath = "//Users/raees/Documents/area_data/imd.csv";
-            var housePriceDatasetPath = "//Users/raees/Documents/area_data/houseprices.csv";
+            var lowerLayerSuperOutputAreaDatasetPath = "../data/imd.csv";
+            var housePriceDatasetPath = "../data/houseprices.csv";
             var lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath =
-                "//Users/raees/Documents/area_data/llsoatoward.csv";
+                "../data/llsoatoward.csv";
 
             // Register your own things directly with Autofac, like:
             builder.RegisterType<DatasetProvider>().As<IDatasetProvider>().SingleInstance();
