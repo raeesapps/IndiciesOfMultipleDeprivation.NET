@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using Autofac.Features.AttributeFilters;
 using IndiciesOfMultipleDeprivation.Model;
-using Microsoft.VisualBasic.FileIO;
 
 namespace IndiciesOfMultipleDeprivation.Parser
 {
     public class HousePriceParser : CsvParser<HousePrice, object>
     {
-        public HousePriceParser([KeyFilter("housePriceDatasetPath")] TextFieldParser textFieldParser) : base(
+        public HousePriceParser([KeyFilter("housePriceDatasetPath")] ITextFieldParser textFieldParser) : base(
             textFieldParser)
         {
         }

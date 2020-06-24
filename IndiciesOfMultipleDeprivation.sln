@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiciesOfMultipleDeprivation", "IndiciesOfMultipleDeprivation\IndiciesOfMultipleDeprivation.csproj", "{BAF2DA4C-3DFD-4257-84DF-E31C7E08C95E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiciesOfMultipleDeprivation.Tests", "IndiciesOfMultipleDeprivation.Tests\IndiciesOfMultipleDeprivation.Tests.csproj", "{86F99272-048A-4060-A2B3-805CD205ABFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{BAF2DA4C-3DFD-4257-84DF-E31C7E08C95E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAF2DA4C-3DFD-4257-84DF-E31C7E08C95E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAF2DA4C-3DFD-4257-84DF-E31C7E08C95E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F99272-048A-4060-A2B3-805CD205ABFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F99272-048A-4060-A2B3-805CD205ABFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F99272-048A-4060-A2B3-805CD205ABFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F99272-048A-4060-A2B3-805CD205ABFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,21 +1,20 @@
 using System.Collections.Generic;
-using Microsoft.VisualBasic.FileIO;
 
 namespace IndiciesOfMultipleDeprivation.Parser
 {
     public abstract class CsvParser<K, V> : ILinearParser<K>, IKeyValueParser<K, V>
     {
-        private readonly TextFieldParser _textFieldParser;
+        private readonly ITextFieldParser _textFieldParser;
 
-        public CsvParser(TextFieldParser textFieldParser)
+        public CsvParser(ITextFieldParser textFieldParser)
         {
             _textFieldParser = textFieldParser;
         }
 
         private void ReadCsvPath(IList<K> list, IDictionary<K, V> dictionary)
         {
-            _textFieldParser.CommentTokens = new string[] { "#" };
-            _textFieldParser.SetDelimiters(new string[] { "," });
+            _textFieldParser.CommentTokens = new[] { "#" };
+            _textFieldParser.SetDelimiters(",");
             _textFieldParser.HasFieldsEnclosedInQuotes = true;
 
             _textFieldParser.ReadLine();
