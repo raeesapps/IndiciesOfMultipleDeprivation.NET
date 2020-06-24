@@ -5,23 +5,39 @@ using Autofac.Features.AttributeFilters;
 using IndiciesOfMultipleDeprivation.Model;
 using IndiciesOfMultipleDeprivation.Parser;
 using IndiciesOfMultipleDeprivation.Query;
-using IndiciesOfMultipleDeprivation.Task;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.VisualBasic.FileIO;
 
-namespace IndiciesOfMultipleDeprivation
+namespace IndiciesOfMultipleDeprivation.Api
 {
-    public static class ContainerConfig
+    public class Startup
     {
-        public static IContainer Configure()
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers();
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
         {
             var lowerLayerSuperOutputAreaDatasetPath = "//Users/raees/Documents/area_data/imd.csv";
             var housePriceDatasetPath = "//Users/raees/Documents/area_data/houseprices.csv";
             var lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath =
                 "//Users/raees/Documents/area_data/llsoatoward.csv";
-            
-            var builder = new ContainerBuilder();
-            
-            builder.RegisterType<Bootstrap>().As<IBootstrap>();
+
+            // Register your own things directly with Autofac, like:
+            builder.RegisterType<DatasetProvider>().As<IDatasetProvider>().SingleInstance();
 
             builder.Register((ctx) =>
                     new TextFieldParserWrapper(new TextFieldParser(lowerLayerSuperOutputAreaDatasetPath)))
@@ -31,7 +47,7 @@ namespace IndiciesOfMultipleDeprivation
             builder.Register((ctx) =>
                     new TextFieldParserWrapper(new TextFieldParser(lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath)))
                 .Named<ITextFieldParser>(nameof(lowerLayerSuperOutputAreaCodeToWardCodeDatasetPath));
-            
+
             builder.RegisterType<LowerLayerSuperOutputAreaParser>().As<ILinearParser<LowerLayerSuperOutputArea>>().WithAttributeFiltering();
             builder.RegisterType<HousePriceParser>().As<ILinearParser<HousePrice>>().WithAttributeFiltering();
             builder.RegisterType<LowerLayerSuperOutputAreaCodeToWardCodeParser>().As<IKeyValueParser<string, string>>().WithAttributeFiltering();
@@ -40,15 +56,28 @@ namespace IndiciesOfMultipleDeprivation
                 .RegisterAssemblyTypes(Assembly.Load(nameof(IndiciesOfMultipleDeprivation)))
                 .Where((t) => t.Namespace != null && t.Namespace.Contains("Queries") && t.IsClass)
                 .As((t) => t.GetInterfaces().FirstOrDefault((i) => i.Name == "I" + t.Name));
-            
-            builder
-                .RegisterAssemblyTypes(Assembly.Load(nameof(IndiciesOfMultipleDeprivation)))
-                .Where((t) => t.Namespace != null && t.Namespace.Contains("Tasks"))
-                .As<ITask>();
-            
-            builder.RegisterType<QueryChain>().As<IQueryChain>();
 
-            return builder.Build();
+            builder.RegisterType<QueryChain>().As<IQueryChain>();
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
