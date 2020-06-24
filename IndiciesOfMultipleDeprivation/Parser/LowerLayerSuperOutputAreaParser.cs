@@ -47,7 +47,6 @@ namespace IndiciesOfMultipleDeprivation.Parser
         public LowerLayerSuperOutputAreaParser([KeyFilter("lowerLayerSuperOutputAreaDatasetPath")]
             ITextFieldParser textFieldParser) : base(textFieldParser)
         {
-            
         }
     }
 }
