@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiciesOfMultipleDeprivati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiciesOfMultipleDeprivation.Tests", "IndiciesOfMultipleDeprivation.Tests\IndiciesOfMultipleDeprivation.Tests.csproj", "{86F99272-048A-4060-A2B3-805CD205ABFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiciesOfMultipleDeprivation.Api", "IndiciesOfMultipleDeprivation.Api\IndiciesOfMultipleDeprivation.Api.csproj", "{F49D6C4D-EB38-470C-B921-35E2C49FB967}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiciesOfMultipleDeprivation.Api", "IndiciesOfMultipleDeprivation.Api\IndiciesOfMultipleDeprivation.Api.csproj", "{93E09056-A6A9-45CD-8976-097C2D0167D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +21,9 @@ Global
 		{86F99272-048A-4060-A2B3-805CD205ABFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86F99272-048A-4060-A2B3-805CD205ABFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86F99272-048A-4060-A2B3-805CD205ABFB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F49D6C4D-EB38-470C-B921-35E2C49FB967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F49D6C4D-EB38-470C-B921-35E2C49FB967}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F49D6C4D-EB38-470C-B921-35E2C49FB967}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F49D6C4D-EB38-470C-B921-35E2C49FB967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93E09056-A6A9-45CD-8976-097C2D0167D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93E09056-A6A9-45CD-8976-097C2D0167D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93E09056-A6A9-45CD-8976-097C2D0167D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93E09056-A6A9-45CD-8976-097C2D0167D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
