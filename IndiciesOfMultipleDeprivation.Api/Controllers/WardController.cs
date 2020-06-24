@@ -31,7 +31,7 @@ namespace IndiciesOfMultipleDeprivation.Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<HousePrice> Let()
+        public IEnumerable<HousePrice> Get()
         {
             _queryChain.Queries.Add(_filterLowerLayerSuperOutputAreasByDecileQuery);
             _queryChain.Queries.Add(_getHousePricesOfLowerLayerSuperOutputAreasQuery);
