@@ -23,12 +23,6 @@ namespace IndiciesOfMultipleDeprivation.Tests.Query.Queries
                 IndexOfMultipleDeprivation = new IndexOfMultipleDeprivation
                 {
                     Decile = 1,
-                    Rank = 23,
-                },
-                LocalAuthorityDistrict = new LocalAuthorityDistrict
-                {
-                    Code = "1",
-                    Name = "L1",
                 },
             };
             var lsoa2 = new LowerLayerSuperOutputArea
@@ -36,12 +30,6 @@ namespace IndiciesOfMultipleDeprivation.Tests.Query.Queries
                 IndexOfMultipleDeprivation = new IndexOfMultipleDeprivation
                 {
                     Decile = 6,
-                    Rank = 230,
-                },
-                LocalAuthorityDistrict = new LocalAuthorityDistrict
-                {
-                    Code = "2",
-                    Name = "L2",
                 },
             };
             var lsoa3 = new LowerLayerSuperOutputArea
@@ -49,12 +37,6 @@ namespace IndiciesOfMultipleDeprivation.Tests.Query.Queries
                 IndexOfMultipleDeprivation = new IndexOfMultipleDeprivation
                 {
                     Decile = 8,
-                    Rank = 330,
-                },
-                LocalAuthorityDistrict = new LocalAuthorityDistrict
-                {
-                    Code = "3",
-                    Name = "L3",
                 },
             };
             var dataset = new Dataset
