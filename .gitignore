@@ -2,6 +2,8 @@ IndiciesOfMultipleDeprivation/bin
 IndiciesOfMultipleDeprivation/obj
 IndiciesOfMultipleDeprivation.Tests/bin
 IndiciesOfMultipleDeprivation.Tests/obj
+IndiciesOfMultipleDeprivation.Api/bin
+IndiciesOfMultipleDeprivation.Api/obj
 .DS_store
 .idea/
 .vs/
