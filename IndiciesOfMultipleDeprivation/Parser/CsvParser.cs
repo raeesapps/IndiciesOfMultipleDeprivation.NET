@@ -13,8 +13,8 @@ namespace IndiciesOfMultipleDeprivation.Parser
 
         private void ReadCsvPath(IList<K> list, IDictionary<K, V> dictionary)
         {
-            _textFieldParser.CommentTokens = new string[] { "#" };
-            _textFieldParser.SetDelimiters(new string[] { "," });
+            _textFieldParser.CommentTokens = new[] { "#" };
+            _textFieldParser.SetDelimiters(",");
             _textFieldParser.HasFieldsEnclosedInQuotes = true;
 
             _textFieldParser.ReadLine();
