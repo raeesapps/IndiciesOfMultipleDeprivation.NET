@@ -9,7 +9,8 @@ namespace IndiciesOfMultipleDeprivation.Model
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(LocalAuthorityDistrict, other.LocalAuthorityDistrict) && Equals(Ward, other.Ward) && AverageHousePrice.Equals(other.AverageHousePrice);
+            return Equals(LocalAuthorityDistrict, other.LocalAuthorityDistrict) && Equals(Ward, other.Ward) &&
+                   AverageHousePrice.Equals(other.AverageHousePrice);
         }
 
         public override bool Equals(object obj)
